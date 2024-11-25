@@ -1,4 +1,4 @@
 const config = {
-    API_KEY: 'sk-hEti6736590623fd37640',
+    API_KEY: 'sk-r7Mt674448e5636347761',
     PLANT_OF_DAY_ID: 1
 };
