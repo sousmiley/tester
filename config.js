@@ -1,6 +1,4 @@
 const config = {
-    API_KEY: process.env.REACT_APP_API_KEY || '', // Default to an empty string if not set
+    API_KEY: 'sk-Or7J67444db32db537761',
     PLANT_OF_DAY_ID: 1
 };
-
-export default config;
