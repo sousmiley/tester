@@ -1,8 +1,4 @@
 const config = {
-    API_KEY: 'sk-ocMS6712583ec2df67317'
+    API_KEY: 'sk-hEti6736590623fd37640',
+    PLANT_OF_DAY_ID: 1
 };
-
-// For older browsers
-if (typeof exports !== 'undefined') {
-    module.exports = config;
-} 
