@@ -1,5 +1,5 @@
 const config = {
-    API_KEY: 'sk-FtXT6745171be0b297774',
+    API_KEY: 'sk-pi3A67455150510917777',
     PLANT_OF_DAY_ID: (() => {
         // Get current date in YYYYMMDD format
         const today = new Date();
