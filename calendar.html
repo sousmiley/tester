@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Calendar</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="stylesy.css" />
+  </head>
+  <body>
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+    <div class="container">
+        <div class="left">
+          <div class="calendar">
+            <div class="month">
+              <i class="fas fa-angle-left prev"></i>
+              <div class="date">december 2024</div>
+              <i class="fas fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            <div class="days"></div>
+            <div class="goto-today">
+              <div class="goto">
+                <input type="text" placeholder="mm/yyyy" class="date-input" />
+                <button class="goto-btn">Go</button>
+              </div>
+              <button class="today-btn">Today</button>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="today-date">
+            <div class="event-day">wed</div>
+            <div class="event-date">12th december 2024</div>
+          </div>
+          <div class="events"></div>
+          <div class="add-event-wrapper">
+            <div class="add-event-header">
+              <div class="title">Add Event</div>
+              <i class="fas fa-times close"></i>
+            </div>
+            <div class="add-event-body">
+              <div class="add-event-input">
+                <input type="text" placeholder="Event Name" class="event-name" />
+              </div>
+              <div class="add-event-input">
+                <input
+                  type="text"
+                  placeholder="Event Time From"
+                  class="event-time-from"
+                />
+              </div>
+              <div class="add-event-input">
+                <input
+                  type="text"
+                  placeholder="Event Time To"
+                  class="event-time-to"
+                />
+              </div>
+            </div>
+            <div class="add-event-footer">
+              <button class="add-event-btn">Add Event</button>
+            </div>
+          </div>
+        </div>
+        <button class="add-event">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+
+
+
+      <!-- Google Calendar code, try to move this in script.js -->
+    <script type="text/javascript">
+
+      // Need to in the API from the .env file when testing
+      var API_KEY = {GOOGLE_API_KEY}; 
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS =
+        ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+      var CALENDAR_ID = 'en.canadian.official#holiday@group.v.calendar.google.com';
+
+
+      function start() {
+        gapi.client.init({
+          'apiKey': API_KEY,
+          'discoveryDocs': DISCOVERY_DOCS,
+        }).then(function() {
+          listUpcomingEvents();
+        });
+      }
+
+      function onLoad() {
+        gapi.load('client', start);
+      }
+
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
+
+      function listUpcomingEvents() {
+        gapi.client.calendar.events.list({
+          'calendarId': CALENDAR_ID,
+          'timeMin': (new Date()).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true,
+          'orderBy': 'startTime'
+        }).then(function(response) {
+          var events = response.result.items;
+          appendPre('Upcoming holidays:');
+          if (events.length > 0) {
+            for (i = 0; i < events.length; i++) {
+              var event = events[i];
+              var when = event.start.dateTime;
+              if (!when) {
+                when = event.start.date;
+              }
+              appendPre(event.summary + ' (' + when + ')');
+            }
+          } else {
+            appendPre('No upcoming events found.');
+          }
+        });
+      }
+
+
+
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload=onLoad();>
+    </script>
+
+    <!-- <div class="credits">
+      <p>
+        Note from Peaks Team : Website code based off of code provided by ❤️
+        <a href="https://github.com/opensource-coding" target="_blank">Open Source Coding</a>
+      </p>
+    </div> -->
+    <script src="script.js"></script>
+  </body>
+</html>

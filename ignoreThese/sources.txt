@@ -1,0 +1,46 @@
+General : 
+https://github.com/public-apis/public-apis?tab=readme-ov-file
+Google - Canadian calendar : https://gist.github.com/dhoeric/76bd1c15168ee0ee61ad3bf1730dcb65#file-cal-csv-L42
+
+
+Notion : 
+tests.http learnt from https://www.youtube.com/watch?v=RcxvrhQKv8I
+- https://www.youtube.com/watch?v=Hk7Vk_v4yfo
+didn't use but may be helpful : https://notion-helper.framer.website/
+- https://developers.notion.com/docs/working-with-page-content
+half tried, but it used python and was mostly getters : https://www.youtube.com/watch?v=M1gu9MDucMA
+only the beggining, the rest used poke api : https://www.youtube.com/watch?v=ec5m6t77eYM&t=1171s
+- https://thomasjfrank.com/notion-api-crash-course/#add-your-npm-packages
+- https://github.com/makenotion/notion-sdk-js
+- https://commotion.page/blog/how-to-create-a-form-app-with-the-notion-api
+- https://www.youtube.com/watch?v=9JdP-S3crt8
+- https://developers.notion.com/reference/post-database-query
+- May be helpful still : https://www.youtube.com/watch?v=zVfVLBjQuSA
+- Pretty comprehensible : https://www.youtube.com/watch?v=hcg1Uco3Ojs&t=143s
+
+Google : 
+- https://github.com/bmorrisondev/bookmate/blob/main/src/app/settings/actions.ts
+- https://www.youtube.com/watch?v=dFaV95gS_0M
+- https://developers.google.com/tasks
+- https://developers.google.com/tasks/troubleshoot-authentication-authorization
+- UML type chart : https://developers.google.com/workspace/guides/auth-overview
+- She had the idea but never explained : https://www.youtube.com/watch?v=sgQyP4R8ufo
+    - https://github.com/chelseafarley/30DayChallengeWeb/commit/cc5770ef7286d33420dd232c7b9f4693f32c77ab
+- https://github.com/googleworkspace/apps-script-samples/blob/main/tasks/simpleTasks/simpleTasks.gs
+- https://developers.google.com/apps-script/guides/projects#creatingDrive
+- https://stackoverflow.com/questions/36125399/how-to-insert-task-in-google-task
+- https://medium.com/quickworkco/how-to-use-google-task-api-34a3a03ce26c
+- https://stackoverflow.com/questions/13643137/how-to-use-google-task-api-initialize-tasks-get-tasklist-etc
+- https://developers.google.com/tasks
+- https://developers.google.com/apps-script/advanced/tasks
+   - https://github.com/googleworkspace/apps-script-samples/tree/main/tasks/simpleTasks
+- https://github.com/bluzi/google-tasks-api/blob/master/README.md
+    - https://github.com/bluzi/google-tasks-api/blob/master/karma.conf.js
+
+
+Website : 
+https://www.youtube.com/watch?v=6EVgmpm4z5U
+https://www.youtube.com/watch?v=r1devGCrm2Y
+
+Google Calendar for website:
+https://stackoverflow.com/questions/66615369/displaying-selected-data-from-google-calendar-on-web-page

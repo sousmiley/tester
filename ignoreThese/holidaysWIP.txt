@@ -1,0 +1,87 @@
+var DISCOVERY_DOCS =
+        ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+// Fetch and add holidays to eventsArr
+async function fetchHolidays() {
+  try {
+    const response = await fetch(
+        DISCOVERY_DOCS
+    );
+    const data = await response.json();
+
+    if (data.items) {
+      data.items.forEach((holiday) => {
+        const holidayDate = new Date(holiday.start.date);
+        const day = holidayDate.getDate();
+        const month = holidayDate.getMonth() + 1;
+        const year = holidayDate.getFullYear();
+
+        // Check if the holiday already exists in eventsArr
+        let holidayExists = false;
+        eventsArr.forEach((event) => {
+          if (event.day === day && event.month === month && event.year === year) {
+            holidayExists = true;
+            event.events.push({
+              title: holiday.summary,
+              time: "All Day",
+              isHoliday: true,
+            });
+          }
+        });
+
+        if (!holidayExists) {
+          eventsArr.push({
+            day,
+            month,
+            year,
+            events: [
+              {
+                title: holiday.summary,
+                time: "All Day",
+                isHoliday: true,
+              },
+            ],
+          });
+        }
+      });
+      initCalendar(); // Reinitialize calendar to show holidays
+    }
+  } catch (error) {
+    console.error("Failed to fetch holidays:", error);
+  }
+}
+
+// Call fetchHolidays on load
+fetchHolidays();
+
+// Update updateEvents to visually distinguish holidays
+function updateEvents(date) {
+  let events = "";
+  eventsArr.forEach((event) => {
+    if (
+      date === event.day &&
+      month + 1 === event.month &&
+      year === event.year
+    ) {
+      event.events.forEach((event) => {
+        const eventClass = event.isHoliday ? "event holiday" : "event";
+        events += `<div class="${eventClass}">
+            <div class="title">
+              <i class="fas fa-circle"></i>
+              <h3 class="event-title">${event.title}</h3>
+            </div>
+            <div class="event-time">
+              <span class="event-time">${event.time}</span>
+            </div>
+        </div>`;
+      });
+    }
+  });
+  if (events === "") {
+    events = `<div class="no-event">
+            <h3>No Events</h3>
+        </div>`;
+  }
+  eventsContainer.innerHTML = events;
+  saveEvents();
+}
